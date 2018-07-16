@@ -7,7 +7,11 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the cat\'s meow ${chalk.red('generator-npm-typescript-starter')} generator!`)
+      yosay(
+        `Welcome to the cat's meow ${chalk.red(
+          'generator-npm-typescript-starter'
+        )} generator!`
+      )
     );
 
     const prompts = [
