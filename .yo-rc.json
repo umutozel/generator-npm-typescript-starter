@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Umut Özel",
+      "authorEmail": "umutozel@gmail.com",
+      "authorUrl": "umutozel.com"
+    }
+  }
+}
