@@ -31,14 +31,12 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'username',
       message: 'Your git user name',
-      default: username,
-      store: true
+      default: username
     }, {
       type: 'input',
       name: 'fullname',
       message: 'Your full name',
-      default: fullname,
-      store: true
+      default: fullname
     }]).then((answers) => {
       this.props = answers;
     });
@@ -70,6 +68,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
+      this.templatePath('.vscode'),
+      this.destinationPath('.vscode')
+    );
+
+    this.fs.copy(
       this.templatePath('lib'),
       this.destinationPath('lib')
     );
@@ -97,6 +100,16 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('tslint.json'),
       this.destinationPath('tslint.json')
+    );
+
+    this.fs.copy(
+      this.templatePath('.nycrc'),
+      this.destinationPath('.nycrc')
+    );
+
+    this.fs.copy(
+      this.templatePath('.gitignore'),
+      this.destinationPath('.gitignore')
     );
   }
 
