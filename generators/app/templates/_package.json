@@ -1,7 +1,7 @@
 {
-  "name": "npm-typescript-starter",
+  "name": "<%= name %>",
   "version": "1.0.0",
-  "description": "Node library with TypeScript starter project",
+  "description": "<%= description %>",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -27,19 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umutozel/npm-typescript-starter.git"
+    "url": "git+https://github.com/<%= username %>/<%= name %>"
   },
   "keywords": [
-    "node",
-    "library",
-    "npm",
-    "typescript",
-    "starter"
   ],
-  "author": "Umut Özel",
+  "author": "<%= username %>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/umutozel/npm-typescript-starter/issues"
+    "url": "https://github.com/<%= username %>/<%= name %>/issues"
   },
-  "homepage": "https://github.com/umutozel/npm-typescript-starter#readme"
+  "homepage": "https://github.com/<%= username %>/<%= name %>#readme"
 }

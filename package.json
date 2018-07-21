@@ -6,7 +6,7 @@
   "author": {
     "name": "Umut Özel",
     "email": "umutozel@gmail.com",
-    "url": "umutozel.com"
+    "url": "https://github.com/umutozel"
   },
   "files": [
     "generators"
@@ -39,8 +39,10 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "fullname": "^3.3.0",
+    "git-user-name": "^2.0.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {

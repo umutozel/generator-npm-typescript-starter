@@ -1,20 +1,104 @@
 'use strict';
 
-const yeoman = require('yeoman-generator');
+const Generator = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
 
-module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
-    const done = this.async();
+const fullnamePromise = require('fullname')();
+const username = require('git-user-name')();
 
-    this.prompt({
+module.exports = class extends Generator {
+
+  constructor(args, opts) {
+    super(args, opts);
+  }
+
+  async prompting() {
+    const fullname = await fullnamePromise;
+
+    return this.prompt([{
       type: 'input',
       name: 'name',
-      message: 'project name',
+      message: 'Your project name',
       default: this.appname
-    }, function (answers) {
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'Your project description'
+    }, {
+      type: 'input',
+      name: 'username',
+      message: 'Your git user name',
+      default: username,
+      store: true
+    }, {
+      type: 'input',
+      name: 'fullname',
+      message: 'Your full name',
+      default: fullname,
+      store: true
+    }]).then((answers) => {
       this.props = answers;
-      this.log(answers.name);
-      done();
-    }).bind(this);
+    });
   }
-});
+
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('_LICENSE'),
+      this.destinationPath('LICENSE'), {
+        fullname: this.props.fullname,
+        year: new Date().getFullYear()
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md'), {
+        name: this.props.name
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        name: this.props.name,
+        description: this.props.description,
+        username: this.props.username
+      }
+    );
+
+    this.fs.copy(
+      this.templatePath('lib'),
+      this.destinationPath('lib')
+    );
+
+    this.fs.copy(
+      this.templatePath('test'),
+      this.destinationPath('test')
+    );
+
+    this.fs.copy(
+      this.templatePath('index.ts'),
+      this.destinationPath('index.ts')
+    );
+
+    this.fs.copy(
+      this.templatePath('mocha.opts'),
+      this.destinationPath('mocha.opts')
+    );
+
+    this.fs.copy(
+      this.templatePath('tsconfig.json'),
+      this.destinationPath('tsconfig.json')
+    );
+
+    this.fs.copy(
+      this.templatePath('tslint.json'),
+      this.destinationPath('tslint.json')
+    );
+  }
+
+  installing() {
+    this.npmInstall();
+  }
+}
