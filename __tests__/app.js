@@ -31,4 +31,12 @@ describe('generator-npm-typescript-starter:app', () => {
       '.vscode/settings.json'
     ]);
   });
+
+  it('replaces prompt values', () => {
+    assert.fileContent('LICENSE', fullname);
+    assert.fileContent('LICENSE', new Date().getFullYear().toString());
+    assert.fileContent('package.json', username);
+    assert.fileContent('package.json', description);
+    assert.fileContent('README.md', name);
+  });
 });
