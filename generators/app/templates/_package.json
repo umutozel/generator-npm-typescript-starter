@@ -1,5 +1,5 @@
 {
-  "name": "<%= name %>",
+  "name": "<%= appname %>",
   "version": "1.0.0",
   "description": "<%= description %>",
   "main": "dist/index.js",
@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= username %>/<%= name %>"
+    "url": "git+https://github.com/<%= username %>/<%= appname %>"
   },
   "keywords": [
   ],
   "author": "<%= username %>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/<%= username %>/<%= name %>/issues"
+    "url": "https://github.com/<%= username %>/<%= appname %>/issues"
   },
-  "homepage": "https://github.com/<%= username %>/<%= name %>#readme"
+  "homepage": "https://github.com/<%= username %>/<%= appname %>#readme"
 }

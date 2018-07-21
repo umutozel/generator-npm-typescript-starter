@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -61,7 +63,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'), {
-        name: this.props.name,
+        appname: this.destinationPath().split(path.sep).pop(),
         description: this.props.description,
         username: this.props.username
       }
