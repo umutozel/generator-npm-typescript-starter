@@ -3,8 +3,6 @@
 const path = require('path');
 
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
 
 const fullnamePromise = require('fullname')();
 const username = require('git-user-name')();
