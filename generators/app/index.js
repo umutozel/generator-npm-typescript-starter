@@ -1,42 +1,20 @@
 'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
 
-module.exports = class extends Generator {
-  prompting() {
-    // Have Yeoman greet the user.
-    this.log(
-      yosay(
-        `Welcome to the cat's meow ${chalk.red(
-          'generator-npm-typescript-starter'
-        )} generator!`
-      )
-    );
+const yeoman = require('yeoman-generator');
 
-    const prompts = [
-      {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
-      }
-    ];
+module.exports = yeoman.generators.Base.extend({
+  prompting: function () {
+    const done = this.async();
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+    this.prompt({
+      type: 'input',
+      name: 'name',
+      message: 'project name',
+      default: this.appname
+    }, function (answers) {
+      this.props = answers;
+      this.log(answers.name);
+      done();
+    }).bind(this);
   }
-
-  writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  }
-
-  install() {
-    this.installDependencies();
-  }
-};
+});
