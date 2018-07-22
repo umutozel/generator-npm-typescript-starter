@@ -1,6 +1,6 @@
 {
   "name": "generator-npm-typescript-starter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generate node library boilerplate with TypeScript support.",
   "homepage": "https://github.com/umutozel/generator-npm-typescript-starter",
   "author": {
